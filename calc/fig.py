@@ -6,11 +6,13 @@ def application(environ, start_response):
     d = parse_qs(environ['QUERY_STRING'])
     a = d.get('a', ['0'])[0]
     b = d.get('b', ['0'])[0]
-    if first_num.isdigit() and second_num.isdigit():
+    try:
         a, b = int(a), int(b)
         x = a + b
         y = a * b
-    else : a, b = int(a), int(b)
+    except ValueError:
+        x = -1
+        y = -1
     response_body = html%{
             'sum':x,
             'mul':y,
