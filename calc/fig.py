@@ -6,7 +6,7 @@ def application(environ, start_response):
     d = parse_qs(environ['QUERY_STRING'])
     a = d.get('a', ['0'])[0]
     b = d.get('b', ['0'])[0]
-    if ''not in [a, b]:
+    if first_num.isdigit() and second_num.isdigit():
         a, b = int(a), int(b)
         x = a + b
         y = a * b
